@@ -16,6 +16,7 @@ _global_script_class_icons={
 [application]
 
 config/name="DodgeAndMoveGame"
+run/main_scene="res://screens/MenuScreen.tscn"
 config/icon="res://icon.png"
 
 [display]

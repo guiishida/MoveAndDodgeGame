@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://caracters/PacManAnimated.tscn" type="PackedScene" id=1]
 [ext_resource path="res://textures/FloorTexture/Tiles052_2K_Displacement.jpg" type="Texture" id=2]
 [ext_resource path="res://textures/FloorTexture/Tiles052_2K_Roughness.jpg" type="Texture" id=3]
+[ext_resource path="res://villains/GhostAnimated.tscn" type="PackedScene" id=4]
 [ext_resource path="res://textures/FloorTexture/Tiles052_2K_Normal.jpg" type="Texture" id=5]
 [ext_resource path="res://textures/FloorTexture/Tiles052_2K_Color.jpg" type="Texture" id=6]
 [ext_resource path="res://assets/blocksLibrary.tres" type="MeshLibrary" id=7]
@@ -27,6 +28,35 @@ depth_flip_binormal = false
 depth_texture = ExtResource( 2 )
 uv1_scale = Vector3( 0.05, 0.05, 0.05 )
 uv1_triplanar = true
+
+[sub_resource type="Animation" id=4]
+resource_name = "movement"
+length = 24.7
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 3, 3.5, 5.5, 6, 6.5, 7, 8.5, 9, 9.5, 10, 11, 11.5, 12.7, 13.2, 13.7, 14.2, 17.7, 18.2, 21.2, 21.7, 23.2, 23.7, 24.2, 24.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( -8.40427, 2.4179, -14.1141 ), Vector3( -8.40427, 2.4179, 3.69934 ), Vector3( -8.40427, 2.4179, 6.16439 ), Vector3( 6.15348, 2.4179, 6.16439 ), Vector3( 8.85108, 2.4179, 6.16439 ), Vector3( 8.85108, 2.4179, 9.09454 ), Vector3( 8.85108, 2.4179, 11.8852 ), Vector3( -3.82116, 2.4179, 11.8852 ), Vector3( -7.30958, 2.4179, 11.8852 ), Vector3( -7.30958, 2.4179, 15.2312 ), Vector3( -7.30958, 2.4179, 18.0789 ), Vector3( -16.351, 2.4179, 18.0789 ), Vector3( -19.9106, 2.4179, 18.0789 ), Vector3( -19.9106, 2.4179, 6.9729 ), Vector3( -19.9106, 2.4179, 3.2709 ), Vector3( -22.6871, 2.4179, 3.2709 ), Vector3( -25.962, 2.4179, 3.2709 ), Vector3( -25.962, 2.4179, -22.1448 ), Vector3( -25.962, 2.4179, -25.7756 ), Vector3( -4.88904, 2.4179, -25.7756 ), Vector3( -2.18374, 2.4179, -25.7756 ), Vector3( -2.18374, 2.4179, -17.0901 ), Vector3( -2.18374, 2.4179, -14.0288 ), Vector3( -4.81786, 2.4179, -14.0288 ), Vector3( -8.40427, 2.4179, -14.1141 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 3, 3.5, 5.5, 6, 6.5, 7, 8.5, 9, 9.5, 10, 11, 11.5, 12.7, 13.2, 13.7, 14.2, 17.7, 18.2, 21.2, 21.7, 23.2, 23.7, 24.2, 24.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 0, 0 ), Vector3( 0, 90, 0 ), Vector3( 0, 90, 0 ), Vector3( 0, 0, 0 ), Vector3( 0, 0, 0 ), Vector3( 0, -90, 0 ), Vector3( 0, -90, 0 ), Vector3( 0, 0, 0 ), Vector3( 0, 0, 0 ), Vector3( 0, -90, 0 ), Vector3( 0, -90, 0 ), Vector3( 0, -180, 0 ), Vector3( 0, -180, 0 ), Vector3( 0, -90, 0 ), Vector3( 0, -90, 0 ), Vector3( 0, -180, 0 ), Vector3( 0, -180, 0 ), Vector3( 0, -270, 0 ), Vector3( 0, -270, 0 ), Vector3( 0, -360, 0 ), Vector3( 0, -360, 0 ), Vector3( 0, -450, 0 ), Vector3( 0, -450, 0 ), Vector3( 0, -360, 0 ) ]
+}
 
 [node name="FirstLevel" type="Spatial"]
 
@@ -65,3 +95,11 @@ data = {
 __meta__ = {
 "_editor_clip_": 0
 }
+
+[node name="GhostAnimated" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8.40427, 2.4179, -14.1141 )
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="GhostAnimated"]
+autoplay = "movement"
+anims/movement = SubResource( 4 )
+[connection signal="body_entered" from="GhostAnimated" to="PacManAnimated" method="_on_GhostAnimated_body_entered"]

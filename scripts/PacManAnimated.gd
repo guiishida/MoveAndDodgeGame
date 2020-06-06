@@ -52,3 +52,8 @@ func _physics_process(delta):
 		characterRot.y = angles
 		character.set_rotation(characterRot)
 				
+
+
+func _on_GhostAnimated_body_entered(body):
+	if body.name == 'PacManAnimated':
+		get_tree().change_scene("res://screens/GameOver.tscn")
