@@ -57,3 +57,18 @@ func _physics_process(delta):
 func _on_GhostAnimated_body_entered(body):
 	if body.name == 'PacManAnimated':
 		get_tree().change_scene("res://screens/GameOver.tscn")
+
+
+func _on_PinkGhost_body_entered(body):
+	if body.name == 'PacManAnimated':
+		get_tree().change_scene("res://screens/GameOver.tscn")
+
+
+func _on_OrangeGhost_body_entered(body):
+	if body.name == 'PacManAnimated':
+		get_tree().change_scene("res://screens/GameOver.tscn")
+
+
+func _on_LightBlueGhost_body_entered(body):
+	if body.name == 'PacManAnimated':
+		get_tree().change_scene("res://screens/GameOver.tscn")
