@@ -1,6 +1,6 @@
 extends KinematicBody
 
-const TRANSLATION_PACE = 5
+const TRANSLATION_PACE = 6
 const ZERO = 0
 const ROTATION_PACE = 6
 var velocity = Vector3(0,0,0)

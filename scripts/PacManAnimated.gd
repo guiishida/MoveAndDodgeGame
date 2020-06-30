@@ -1,7 +1,7 @@
 extends KinematicBody
 
 const GRAVITY = -9.8
-const SPEED = 6
+const SPEED = 7
 const ACCELERATION = 3
 const DE_ACCELERATION = 5
 const ZERO = 0

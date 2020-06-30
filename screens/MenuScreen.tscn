@@ -45,15 +45,15 @@ __meta__ = {
 }
 
 [node name="button_menu_play" type="Button" parent="."]
-margin_left = 479.724
-margin_top = 427.607
-margin_right = 786.724
-margin_bottom = 575.607
+margin_left = 290.876
+margin_top = 415.877
+margin_right = 963.876
+margin_bottom = 563.877
 custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.168627, 0.701961, 0.0980392, 1 )
 custom_colors/font_color_hover = Color( 0.219608, 0.435294, 0.862745, 1 )
 custom_colors/font_color_pressed = Color( 0.223529, 0.760784, 0.8, 1 )
-text = "PLAY!"
+text = "START!"
 flat = true
 script = ExtResource( 2 )
 __meta__ = {
