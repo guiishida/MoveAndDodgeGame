@@ -9,9 +9,9 @@ func _ready():
 func _on_ballCollected():
 	coins = coins + 1
 	_ready()
-	if coins == 15:
+	if coins == 25:
 		$Timer.start()
 	
 		
 func _on_Timer_timeout():
-	get_tree().change_scene("res://screens/GameOver.tscn")
+	get_tree().change_scene("res://screens/Win.tscn")

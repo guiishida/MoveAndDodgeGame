@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Fonts/Bangers-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://scripts/button_menu_play.gd" type="Script" id=2]
@@ -9,11 +9,6 @@ use_filter = true
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=2]
-size = 90
-use_filter = true
-font_data = ExtResource( 1 )
-
-[sub_resource type="DynamicFont" id=3]
 size = 90
 use_filter = true
 font_data = ExtResource( 1 )
@@ -50,10 +45,10 @@ __meta__ = {
 }
 
 [node name="button_menu_play" type="Button" parent="."]
-margin_left = 195.866
-margin_top = 414.704
-margin_right = 502.866
-margin_bottom = 562.704
+margin_left = 479.724
+margin_top = 427.607
+margin_right = 786.724
+margin_bottom = 575.607
 custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.168627, 0.701961, 0.0980392, 1 )
 custom_colors/font_color_hover = Color( 0.219608, 0.435294, 0.862745, 1 )
@@ -61,21 +56,6 @@ custom_colors/font_color_pressed = Color( 0.223529, 0.760784, 0.8, 1 )
 text = "PLAY!"
 flat = true
 script = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="button_menu_settings" type="Button" parent="."]
-margin_left = 750.324
-margin_top = 410.301
-margin_right = 1059.32
-margin_bottom = 571.301
-custom_fonts/font = SubResource( 3 )
-custom_colors/font_color = Color( 0.168627, 0.701961, 0.0980392, 1 )
-custom_colors/font_color_hover = Color( 0.219608, 0.435294, 0.862745, 1 )
-custom_colors/font_color_pressed = Color( 0.223529, 0.760784, 0.8, 1 )
-text = "Settings"
-flat = true
 __meta__ = {
 "_edit_use_anchors_": false
 }

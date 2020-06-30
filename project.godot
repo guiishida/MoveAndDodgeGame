@@ -57,4 +57,4 @@ ui_down={
 
 [rendering]
 
-environment/default_environment="res://new_environment.tres"
+environment/default_environment="res://assets/new_environment.tres"
