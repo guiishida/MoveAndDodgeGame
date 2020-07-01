@@ -1,0 +1,587 @@
+[gd_scene load_steps=28 format=2]
+
+[ext_resource path="res://caracters/ZebraCaracter.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/WallsLibrary.tres" type="MeshLibrary" id=2]
+[ext_resource path="res://textures/FloorTexture/PavingStones067_2K_Color.jpg" type="Texture" id=3]
+[ext_resource path="res://textures/FloorTexture/PavingStones067_2K_Normal.jpg" type="Texture" id=4]
+[ext_resource path="res://textures/FloorTexture/PavingStones067_2K_Roughness.jpg" type="Texture" id=5]
+[ext_resource path="res://textures/FloorTexture/PavingStones067_2K_Displacement.jpg" type="Texture" id=6]
+[ext_resource path="res://assets/new_environment.tres" type="Environment" id=7]
+[ext_resource path="res://assets/EnergyBall.tscn" type="PackedScene" id=8]
+[ext_resource path="res://CounterLvl2.gd" type="Script" id=9]
+[ext_resource path="res://villains/SpikeBall.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scripts/Zebra.gd" type="Script" id=11]
+[ext_resource path="res://assets/BallLvl2.gd" type="Script" id=12]
+[ext_resource path="res://Fonts/Bangers-Regular.ttf" type="DynamicFontData" id=13]
+[ext_resource path="res://sprites/hud_ball.png" type="Texture" id=14]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 30, 1, 30 )
+
+[sub_resource type="CubeMesh" id=2]
+size = Vector3( 60, 2, 60 )
+
+[sub_resource type="SpatialMaterial" id=3]
+albedo_texture = ExtResource( 3 )
+roughness_texture = ExtResource( 5 )
+normal_enabled = true
+normal_scale = -5.0
+normal_texture = ExtResource( 4 )
+depth_enabled = true
+depth_scale = 0.05
+depth_deep_parallax = false
+depth_flip_tangent = false
+depth_flip_binormal = false
+depth_texture = ExtResource( 6 )
+uv1_scale = Vector3( 0.05, 0.05, 0.05 )
+uv1_triplanar = true
+
+[sub_resource type="Animation" id=4]
+resource_name = "Spike1Animation"
+length = 10.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 5, 10 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( -22.515, 3.24608, 23.8654 ), Vector3( 22.717, 3.24608, 23.8654 ), Vector3( -22.515, 3.24608, 23.8654 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 10 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "Spike1Animation"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"update": 0,
+"values": [  ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"update": 0,
+"values": [  ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "Spike2Animation"
+length = 17.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 3, 4, 8.5, 13, 14, 17 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( -19.1397, 3.24608, -22.8025 ), Vector3( -19.1397, 3.24608, -11.7577 ), Vector3( -10.4959, 3.24608, -11.7577 ), Vector3( -10.4959, 3.24608, 16.3639 ), Vector3( -10.4959, 3.24608, -11.7577 ), Vector3( -19.1397, 3.24608, -11.7577 ), Vector3( -19.1397, 3.24608, -22.8025 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 3, 4, 8.5, 13, 14, 17 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 0, 120 ), Vector3( 45, 0, 120 ), Vector3( 45, 0, 480 ), Vector3( 45, 0, 120 ), Vector3( 0, 0, 120 ), Vector3( 0, 0, 120 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "Spike1Animation"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"update": 0,
+"values": [  ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"update": 0,
+"values": [  ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "Spike2Animation"
+length = 17.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 3, 4, 8.5, 13, 14, 17 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( -19.1397, 3.24608, -22.8025 ), Vector3( -19.1397, 3.24608, -11.7577 ), Vector3( -10.4959, 3.24608, -11.7577 ), Vector3( -10.4959, 3.24608, 16.3639 ), Vector3( -10.4959, 3.24608, -11.7577 ), Vector3( -19.1397, 3.24608, -11.7577 ), Vector3( -19.1397, 3.24608, -22.8025 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 3, 4, 8.5, 13, 14, 17 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 0, 120 ), Vector3( 45, 0, 120 ), Vector3( 45, 0, 480 ), Vector3( 45, 0, 120 ), Vector3( 0, 0, 120 ), Vector3( 0, 0, 120 ) ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "Spike3Animation"
+length = 10.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 5, 6, 10 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 17.2328, 3.24608, -8.40227 ), Vector3( 23.6831, 3.24608, -8.40227 ), Vector3( 23.6831, 3.24608, 11.0135 ), Vector3( 16.6953, 3.24608, 11.0135 ), Vector3( 17.2328, 3.24608, -8.40227 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1, 5, 6, 10 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 90, 0, 0 ), Vector3( 90, 0, 120 ), Vector3( 0, 0, 120 ), Vector3( 0, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "Spike1Animation"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 5, 10 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( -22.515, 3.24608, 23.8654 ), Vector3( 22.717, 3.24608, 23.8654 ), Vector3( -22.515, 3.24608, 23.8654 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 10 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=11]
+resource_name = "Spike4Animation"
+length = 12.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 6, 11, 12 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 1.42674, 3.24608, -11.2527 ), Vector3( 1.42674, 3.24608, -23.2579 ), Vector3( 23.2763, 3.24608, -23.2579 ), Vector3( 0.946535, 3.24608, -23.2579 ), Vector3( 0.946535, 3.24608, -11.973 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1, 6, 11, 12 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 0, 90 ), Vector3( 360, 0, 90 ), Vector3( 3.73387e-05, 0, 90 ), Vector3( 0, 0, 0 ) ]
+}
+
+[sub_resource type="DynamicFont" id=12]
+size = 56
+font_data = ExtResource( 13 )
+
+[sub_resource type="DynamicFont" id=13]
+size = 90
+font_data = ExtResource( 13 )
+
+[node name="SecondLevel" type="Spatial"]
+
+[node name="ZebraCaracter" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
+script = ExtResource( 11 )
+
+[node name="Spatial" type="Spatial" parent="ZebraCaracter"]
+transform = Transform( 1, 0, 0, 0, 0.838956, 0.5442, 0, -0.5442, 0.838956, 0, 6.82124, 12.139 )
+
+[node name="Floor" type="StaticBody" parent="."]
+
+[node name="CollisionShape" type="CollisionShape" parent="Floor"]
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Floor"]
+mesh = SubResource( 2 )
+skeleton = NodePath("")
+material/0 = SubResource( 3 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 0.40554, 0.501676, -0.764106, 0.914077, -0.222574, 0.339004, 0, -0.835932, -0.548833, -0.541916, 18.0641, -7.58877 )
+light_color = Color( 0.972549, 0.937255, 0.027451, 1 )
+light_energy = 7.5
+shadow_enabled = true
+
+[node name="GridMap" type="GridMap" parent="."]
+transform = Transform( 0.5, 0, 0, 0, 2, 0, 0, 0, 1, 0, 1, 0 )
+mesh_library = ExtResource( 2 )
+cell_size = Vector3( 1, 1, 1 )
+data = {
+"cells": PoolIntArray( 9, 0, 196608, 28, 0, 196608, 41, 0, 196608, 56, 0, 196609, 65479, 0, 196609, 65508, 0, 196608, 9, 1, 196608, 28, 1, 196608, 41, 1, 196608, 56, 1, 196609, 65479, 1, 196609, 65508, 1, 196608, 9, 2, 196608, 28, 2, 196608, 41, 2, 196608, 56, 2, 196609, 65479, 2, 196609, 65508, 2, 196608, 9, 3, 196608, 28, 3, 196608, 41, 3, 196608, 56, 3, 196609, 65479, 3, 196609, 65494, 3, 196608, 65508, 3, 196608, 9, 4, 196608, 28, 4, 196608, 41, 4, 196608, 56, 4, 196609, 65479, 4, 196609, 65494, 4, 196608, 65508, 4, 196608, 28, 5, 196608, 41, 5, 196608, 56, 5, 196609, 65479, 5, 196609, 65494, 5, 196608, 65508, 5, 196608, 65522, 5, 196608, 28, 6, 196608, 41, 6, 196608, 56, 6, 196609, 65479, 6, 196609, 65494, 6, 196608, 65508, 6, 537067520, 65522, 6, 196608, 28, 7, 196608, 41, 7, 196608, 56, 7, 196609, 65479, 7, 196609, 65494, 7, 196608, 65508, 7, 196608, 65522, 7, 196608, 28, 8, 196608, 41, 8, 196608, 56, 8, 196609, 65479, 8, 196609, 65494, 8, 196608, 65508, 8, 196608, 65522, 8, 196608, 28, 9, 196608, 56, 9, 196609, 65479, 9, 196609, 65494, 9, 196608, 65508, 9, 196608, 65522, 9, 196608, 28, 10, 196608, 56, 10, 196609, 65479, 10, 196609, 65494, 10, 196608, 65508, 10, 196608, 65522, 10, 196608, 28, 11, 196608, 56, 11, 196609, 65479, 11, 196609, 65494, 11, 196608, 65508, 11, 196608, 65522, 11, 196608, 28, 12, 196608, 56, 12, 196609, 65479, 12, 196609, 65494, 12, 196608, 65508, 12, 196608, 65522, 12, 196608, 28, 13, 196608, 56, 13, 196609, 65479, 13, 196609, 65494, 13, 196608, 65508, 13, 196608, 65522, 13, 196608, 0, 14, 196608, 1, 14, 196608, 2, 14, 196608, 3, 14, 196608, 4, 14, 196608, 5, 14, 196608, 6, 14, -1610416128, 28, 14, 196608, 56, 14, 537067521, 65479, 14, 196609, 65494, 14, 196608, 65508, 14, 196608, 65522, 14, 196608, 65523, 14, 196608, 65524, 14, 196608, 65525, 14, 196608, 65526, 14, 196608, 65527, 14, 196608, 65528, 14, 196608, 65529, 14, 196608, 65530, 14, 196608, 65531, 14, 196608, 65532, 14, 196608, 65533, 14, 196608, 65534, 14, -1610416128, 65535, 14, 196608, 41, 15, 196608, 56, 15, 196609, 65479, 15, 196609, 65494, 15, -1610416128, 65508, 15, 196608, 41, 16, 196608, 56, 16, 196609, 65479, 16, 196609, 65494, 16, 196608, 65508, 16, 196608, 41, 17, 196608, 56, 17, 196609, 65479, 17, 196609, 65494, 17, 537067520, 65508, 17, 537067520, 41, 18, 537067520, 56, 18, 537067521, 65479, 18, 537067521, 65494, 18, 537067520, 65508, 18, 537067520, 41, 19, 537067520, 56, 19, 537067521, 65479, 19, 537067521, 65494, 19, 537067520, 65508, 19, 537067520, 41, 20, 537067520, 56, 20, 537067521, 65479, 20, 537067521, 65494, 20, 537067520, 65508, 20, 537067520, 12, 21, 537067520, 13, 21, 537067520, 14, 21, 537067520, 15, 21, 537067520, 16, 21, 537067520, 17, 21, 537067520, 18, 21, 537067520, 19, 21, 537067520, 20, 21, 537067520, 21, 21, 537067520, 22, 21, 537067520, 23, 21, 537067520, 24, 21, 537067520, 25, 21, 537067520, 26, 21, 537067520, 27, 21, 537067520, 28, 21, 537067520, 29, 21, 537067520, 30, 21, 537067520, 31, 21, 537067520, 32, 21, 537067520, 33, 21, 537067520, 34, 21, 537067520, 35, 21, 537067520, 36, 21, 537067520, 37, 21, 537067520, 38, 21, 537067520, 39, 21, 537067520, 40, 21, 537067520, 41, 21, 537067520, 56, 21, 537067521, 65479, 21, 537067521, 65494, 21, 537067520, 65508, 21, 537067520, 65509, 21, 537067520, 65510, 21, 537067520, 65511, 21, 537067520, 65512, 21, 537067520, 65513, 21, 537067520, 65514, 21, 537067520, 65515, 21, 537067520, 65516, 21, 537067520, 65517, 21, 537067520, 65518, 21, 537067520, 65519, 21, 537067520, 65520, 21, 537067520, 65521, 21, 537067520, 65522, 21, 537067520, 65523, 21, 537067520, 65524, 21, 537067520, 65525, 21, 537067520, 65526, 21, 537067520, 65527, 21, 537067520, 56, 22, 537067521, 65479, 22, 537067521, 56, 23, 537067521, 65479, 23, 537067521, 56, 24, 537067521, 65479, 24, 537067521, 56, 25, 537067521, 65479, 25, 537067521, 56, 26, 537067521, 65479, 26, 537067521, 0, 27, 537067521, 1, 27, 537067521, 2, 27, 537067521, 3, 27, 537067521, 4, 27, 537067521, 5, 27, 537067521, 6, 27, 537067521, 7, 27, 537067521, 8, 27, 537067521, 9, 27, 537067521, 10, 27, 537067521, 11, 27, 537067521, 12, 27, 537067521, 13, 27, 537067521, 14, 27, 537067521, 15, 27, 537067521, 16, 27, 537067521, 17, 27, 537067521, 18, 27, 537067521, 19, 27, 537067521, 20, 27, 537067521, 21, 27, 537067521, 22, 27, 537067521, 23, 27, 537067521, 24, 27, 537067521, 25, 27, 537067521, 26, 27, 537067521, 27, 27, 537067521, 28, 27, 537067521, 29, 27, 537067521, 30, 27, 537067521, 31, 27, 537067521, 32, 27, 537067521, 33, 27, 537067521, 34, 27, 537067521, 35, 27, 537067521, 36, 27, 537067521, 37, 27, 537067521, 38, 27, 537067521, 39, 27, 537067521, 40, 27, 537067521, 41, 27, 537067521, 42, 27, 537067521, 43, 27, 537067521, 44, 27, 537067521, 45, 27, 537067521, 46, 27, 537067521, 47, 27, 537067521, 48, 27, 537067521, 49, 27, 537067521, 50, 27, 537067521, 51, 27, 537067521, 52, 27, 537067521, 53, 27, 537067521, 54, 27, 537067521, 55, 27, 537067521, 56, 27, 537067521, 65479, 27, 537067521, 65480, 27, 537067521, 65481, 27, 537067521, 65482, 27, 537067521, 65483, 27, 537067521, 65484, 27, 537067521, 65485, 27, 537067521, 65486, 27, 537067521, 65487, 27, 537067521, 65488, 27, 537067521, 65489, 27, 537067521, 65490, 27, 537067521, 65491, 27, 537067521, 65492, 27, 537067521, 65493, 27, 537067521, 65494, 27, 537067521, 65495, 27, 537067521, 65496, 27, 537067521, 65497, 27, 537067521, 65498, 27, 537067521, 65499, 27, 537067521, 65500, 27, 537067521, 65501, 27, 537067521, 65502, 27, 537067521, 65503, 27, 537067521, 65504, 27, 537067521, 65505, 27, 537067521, 65506, 27, 537067521, 65507, 27, 537067521, 65508, 27, 537067521, 65509, 27, 537067521, 65510, 27, 537067521, 65511, 27, 537067521, 65512, 27, 537067521, 65513, 27, 537067521, 65514, 27, 537067521, 65515, 27, 537067521, 65516, 27, 537067521, 65517, 27, 537067521, 65518, 27, 537067521, 65519, 27, 537067521, 65520, 27, 537067521, 65521, 27, 537067521, 65522, 27, 537067521, 65523, 27, 537067521, 65524, 27, 537067521, 65525, 27, 537067521, 65526, 27, 537067521, 65527, 27, 537067521, 65528, 27, 537067521, 65529, 27, 537067521, 65530, 27, 537067521, 65531, 27, 537067521, 65532, 27, 537067521, 65533, 27, 537067521, 65534, 27, 537067521, 65535, 27, 537067521, 0, 65508, 537067521, 1, 65508, 537067521, 2, 65508, 537067521, 3, 65508, 537067521, 4, 65508, 537067521, 5, 65508, 537067521, 6, 65508, 537067521, 7, 65508, 537067521, 8, 65508, 537067521, 9, 65508, 537067521, 10, 65508, 537067521, 11, 65508, 537067521, 12, 65508, 537067521, 13, 65508, 537067521, 14, 65508, 537067521, 15, 65508, 537067521, 16, 65508, 537067521, 17, 65508, 537067521, 18, 65508, 537067521, 19, 65508, 537067521, 20, 65508, 537067521, 21, 65508, 537067521, 22, 65508, 537067521, 23, 65508, 537067521, 24, 65508, 537067521, 25, 65508, 537067521, 26, 65508, 537067521, 27, 65508, 537067521, 28, 65508, 537067521, 29, 65508, 537067521, 30, 65508, 537067521, 31, 65508, 537067521, 32, 65508, 537067521, 33, 65508, 537067521, 34, 65508, 537067521, 35, 65508, 537067521, 36, 65508, 537067521, 37, 65508, 537067521, 38, 65508, 537067521, 39, 65508, 537067521, 40, 65508, 537067521, 41, 65508, 537067521, 42, 65508, 537067521, 43, 65508, 537067521, 44, 65508, 537067521, 45, 65508, 537067521, 46, 65508, 537067521, 47, 65508, 537067521, 48, 65508, 537067521, 49, 65508, 537067521, 50, 65508, 537067521, 51, 65508, 537067521, 52, 65508, 537067521, 53, 65508, 537067521, 54, 65508, 537067521, 55, 65508, 537067521, 56, 65508, 537067521, 65479, 65508, 537067521, 65480, 65508, 537067521, 65481, 65508, 537067521, 65482, 65508, 537067521, 65483, 65508, 537067521, 65484, 65508, 537067521, 65485, 65508, 537067521, 65486, 65508, 537067521, 65487, 65508, 537067521, 65488, 65508, 537067521, 65489, 65508, 537067521, 65490, 65508, 537067521, 65491, 65508, 537067521, 65492, 65508, 537067521, 65493, 65508, 537067521, 65494, 65508, 537067521, 65495, 65508, 537067521, 65496, 65508, 537067521, 65497, 65508, 537067521, 65498, 65508, 537067521, 65499, 65508, 537067521, 65500, 65508, 537067521, 65501, 65508, 537067521, 65502, 65508, 537067521, 65503, 65508, 537067521, 65504, 65508, 537067521, 65505, 65508, 537067521, 65506, 65508, 537067521, 65507, 65508, 537067521, 65508, 65508, 537067521, 65509, 65508, 537067521, 65510, 65508, 537067521, 65511, 65508, 537067521, 65512, 65508, 537067521, 65513, 65508, 537067521, 65514, 65508, 537067521, 65515, 65508, 537067521, 65516, 65508, 537067521, 65517, 65508, 537067521, 65518, 65508, 537067521, 65519, 65508, 537067521, 65520, 65508, 537067521, 65521, 65508, 537067521, 65522, 65508, 537067521, 65523, 65508, 537067521, 65524, 65508, 537067521, 65525, 65508, 537067521, 65526, 65508, 537067521, 65527, 65508, 537067521, 65528, 65508, 537067521, 65529, 65508, 537067521, 65530, 65508, 537067521, 65531, 65508, 537067521, 65532, 65508, 537067521, 65533, 65508, 537067521, 65534, 65508, 537067521, 65535, 65508, 537067521, 56, 65509, 537067521, 65479, 65509, 537067521, 65504, 65509, 537067520, 56, 65510, 537067521, 65479, 65510, 537067521, 65491, 65510, 0, 65504, 65510, 537067520, 56, 65511, 537067521, 65479, 65511, 537067521, 65491, 65511, 536870912, 65504, 65511, 537067520, 56, 65512, 537067521, 65479, 65512, 537067521, 65504, 65512, 537067520, 56, 65513, 537067521, 65479, 65513, 537067521, 65491, 65513, -1610612736, 65504, 65513, 537067520, 56, 65514, 537067521, 65479, 65514, 537067521, 65491, 65514, 0, 65504, 65514, 537067520, 10, 65515, 537067520, 11, 65515, 1610809344, 12, 65515, 537067520, 13, 65515, 537067520, 14, 65515, 537067520, 15, 65515, 537067520, 16, 65515, 537067520, 17, 65515, 537067520, 18, 65515, 537067520, 19, 65515, 537067520, 20, 65515, 537067520, 21, 65515, 537067520, 22, 65515, 1610809344, 23, 65515, 537067520, 24, 65515, 537067520, 25, 65515, 1610809344, 26, 65515, 537067520, 27, 65515, 1610809344, 28, 65515, 537067520, 29, 65515, 537067520, 30, 65515, 1610809344, 31, 65515, 1610809344, 32, 65515, 1610809344, 33, 65515, 1610809344, 34, 65515, 1610809344, 35, 65515, 537067520, 36, 65515, 537067520, 37, 65515, 537067520, 38, 65515, 537067520, 39, 65515, 537067520, 40, 65515, 537067520, 41, 65515, 537067520, 56, 65515, 537067521, 65479, 65515, 1610809345, 65491, 65515, 536870912, 65504, 65515, 1610809344, 65505, 65515, 1610809344, 65506, 65515, 537067520, 65507, 65515, 1610809344, 65508, 65515, 1610809344, 65509, 65515, 1610809344, 65510, 65515, 537067520, 65511, 65515, 537067520, 65512, 65515, 537067520, 65513, 65515, 1610809344, 65514, 65515, 537067520, 65515, 65515, 537067520, 65516, 65515, 537067520, 65517, 65515, 537067520, 65518, 65515, 537067520, 65519, 65515, 537067520, 65520, 65515, 1610809344, 65521, 65515, 1610809344, 65522, 65515, 1610809344, 65523, 65515, 1610809344, 65524, 65515, 1610809344, 65525, 65515, 1610809344, 65526, 65515, 1610809344, 65527, 65515, 1610809344, 65528, 65515, 1610809344, 65529, 65515, 1610809344, 41, 65516, 1610809344, 56, 65516, 1610809345, 65479, 65516, 1610809345, 65491, 65516, -1610612736, 65504, 65516, 1610809344, 41, 65517, 1610809344, 56, 65517, 1610809345, 65479, 65517, 1610809345, 65491, 65517, -1610612736, 65504, 65517, 1610809344, 41, 65518, 1610809344, 56, 65518, 1610809345, 65479, 65518, 1610809345, 65491, 65518, 0, 65504, 65518, 1610809344, 41, 65519, 1610809344, 56, 65519, 1610809345, 65479, 65519, 1610809345, 65491, 65519, 536870912, 65504, 65519, 1610809344, 41, 65520, 1610809344, 56, 65520, 1610809345, 65479, 65520, 1610809345, 65491, 65520, 0, 65504, 65520, 1610809344, 65522, 65520, 1610809344, 28, 65521, 1610809344, 41, 65521, 1610809344, 56, 65521, 1610809345, 65479, 65521, 1610809345, 65491, 65521, -1610612736, 65504, 65521, 1610809344, 65522, 65521, 1610809344, 28, 65522, 1610809344, 41, 65522, 1610809344, 56, 65522, 196609, 65479, 65522, 537067521, 65491, 65522, 0, 65522, 65522, 196608, 28, 65523, 537067520, 41, 65523, 196608, 56, 65523, 537067521, 65479, 65523, 537067521, 65491, 65523, 536870912, 65522, 65523, 196608, 28, 65524, 196608, 56, 65524, 196609, 65479, 65524, 196609, 65491, 65524, -1610612736, 65522, 65524, 537067520, 28, 65525, 196608, 56, 65525, 196609, 65479, 65525, 537067521, 65491, 65525, 536870912, 65522, 65525, 537067520, 28, 65526, 537067520, 56, 65526, 196609, 65479, 65526, 196609, 65522, 65526, 196608, 0, 65527, 196608, 1, 65527, 196608, 2, 65527, 196608, 3, 65527, 196608, 4, 65527, 196608, 5, 65527, 196608, 6, 65527, 196608, 7, 65527, 537067520, 8, 65527, 196608, 9, 65527, 196608, 28, 65527, 196608, 56, 65527, 196609, 65479, 65527, 196609, 65491, 65527, 196608, 65492, 65527, 196608, 65493, 65527, 196608, 65494, 65527, 196608, 65495, 65527, 196608, 65496, 65527, 196608, 65497, 65527, 196608, 65498, 65527, 196608, 65499, 65527, 196608, 65500, 65527, 196608, 65501, 65527, 196608, 65502, 65527, 196608, 65503, 65527, 196608, 65504, 65527, 196608, 65505, 65527, 196608, 65522, 65527, 196608, 65523, 65527, 196608, 65524, 65527, 196608, 65525, 65527, 196608, 65526, 65527, 196608, 65527, 65527, 196608, 65528, 65527, 196608, 65529, 65527, 196608, 65530, 65527, 196608, 65531, 65527, 196608, 65532, 65527, 196608, 65533, 65527, 196608, 65534, 65527, 196608, 65535, 65527, 196608, 9, 65528, 196608, 28, 65528, 196608, 56, 65528, 196609, 65479, 65528, 196609, 9, 65529, 196608, 28, 65529, 196608, 56, 65529, 196609, 65479, 65529, 196609, 9, 65530, 196608, 28, 65530, 196608, 56, 65530, 196609, 65479, 65530, 196609, 9, 65531, 196608, 28, 65531, 196608, 56, 65531, 196609, 65479, 65531, 196609, 9, 65532, 196608, 28, 65532, 196608, 41, 65532, 196608, 56, 65532, 196609, 65479, 65532, 196609, 9, 65533, -1610416128, 28, 65533, -1610416128, 41, 65533, 196608, 56, 65533, 196609, 65479, 65533, 196609, 9, 65534, 196608, 28, 65534, 196608, 41, 65534, 196608, 56, 65534, 196609, 65479, 65534, 196609, 65480, 65534, 196608, 65481, 65534, -1610416128, 65482, 65534, 196608, 65483, 65534, 196608, 65484, 65534, 196608, 65485, 65534, 196608, 65486, 65534, 196608, 65487, 65534, 196608, 65488, 65534, -1610416128, 65489, 65534, 196608, 65490, 65534, 196608, 65491, 65534, 196608, 65492, 65534, 196608, 65493, 65534, 196608, 65494, 65534, 196608, 65495, 65534, 196608, 65496, 65534, 196608, 65497, 65534, 196608, 65498, 65534, 196608, 65499, 65534, 196608, 65500, 65534, 196608, 65501, 65534, 196608, 65502, 65534, 196608, 65503, 65534, 196608, 65504, 65534, 196608, 65505, 65534, 196608, 65506, 65534, 196608, 65507, 65534, 196608, 65508, 65534, 196608, 9, 65535, 196608, 28, 65535, 196608, 41, 65535, 196608, 56, 65535, 196609, 65479, 65535, 196609, 65508, 65535, 196608 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, -1, 0 )
+}
+
+[node name="Balls" type="Spatial" parent="."]
+
+[node name="ball_holder" type="Spatial" parent="Balls"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -24.5796, 2, 5.73695 )
+
+[node name="Ball" parent="Balls/ball_holder" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.243597, 0, 0 )
+script = ExtResource( 12 )
+
+[node name="ball_holder5" type="Spatial" parent="Balls"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -21.0151, 2, 0.955255 )
+
+[node name="Ball" parent="Balls/ball_holder5" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.243597, 0, 0 )
+script = ExtResource( 12 )
+
+[node name="ball_holder10" type="Spatial" parent="Balls"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -25.8837, 2, -23.6175 )
+
+[node name="Ball" parent="Balls/ball_holder10" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.243597, 0, 0 )
+script = ExtResource( 12 )
+
+[node name="ball_holder11" type="Spatial" parent="Balls"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -25.8837, 2, -5.53399 )
+
+[node name="Ball" parent="Balls/ball_holder11" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.243597, 0, 0 )
+script = ExtResource( 12 )
+
+[node name="ball_holder12" type="Spatial" parent="Balls"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -19.1893, 2, -23.0958 )
+
+[node name="Ball" parent="Balls/ball_holder12" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.243597, 0, 0 )
+script = ExtResource( 12 )
+
+[node name="ball_holder13" type="Spatial" parent="Balls"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12.2341, 2, -24.3999 )
+
+[node name="Ball" parent="Balls/ball_holder13" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.243597, 0, 0 )
+script = ExtResource( 12 )
+
+[node name="ball_holder14" type="Spatial" parent="Balls"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 24.1067, 2, -24.3999 )
+
+[node name="Ball" parent="Balls/ball_holder14" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.243597, 0, 0 )
+script = ExtResource( 12 )
+
+[node name="ball_holder16" type="Spatial" parent="Balls"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 24.1067, 2, -15.3582 )
+
+[node name="Ball" parent="Balls/ball_holder16" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.243597, 0, 0 )
+script = ExtResource( 12 )
+
+[node name="ball_holder17" type="Spatial" parent="Balls"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 24.1067, 2, 2.02978 )
+
+[node name="Ball" parent="Balls/ball_holder17" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.243597, 0, 0 )
+script = ExtResource( 12 )
+
+[node name="ball_holder18" type="Spatial" parent="Balls"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.24002, 2, 9.85437 )
+
+[node name="Ball" parent="Balls/ball_holder18" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.243597, 0, 0 )
+script = ExtResource( 12 )
+
+[node name="ball_holder19" type="Spatial" parent="Balls"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 17.0392, 2, 10.9043 )
+
+[node name="Ball" parent="Balls/ball_holder19" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.243597, 0, 0 )
+script = ExtResource( 12 )
+
+[node name="ball_holder20" type="Spatial" parent="Balls"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 17.0392, 2, -9.34374 )
+
+[node name="Ball" parent="Balls/ball_holder20" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.243597, 0, 0 )
+script = ExtResource( 12 )
+
+[node name="ball_holder21" type="Spatial" parent="Balls"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.24002, 2, -6.34404 )
+
+[node name="Ball" parent="Balls/ball_holder21" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.243597, 0, 0 )
+script = ExtResource( 12 )
+
+[node name="ball_holder22" type="Spatial" parent="Balls"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10.408, 2, 17.6536 )
+
+[node name="Ball" parent="Balls/ball_holder22" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.243597, 0, 0 )
+script = ExtResource( 12 )
+
+[node name="ball_holder15" type="Spatial" parent="Balls"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.459093, 2, -16.4884 )
+
+[node name="Ball" parent="Balls/ball_holder15" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.243597, 0, 0 )
+script = ExtResource( 12 )
+
+[node name="ball_holder2" type="Spatial" parent="Balls"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -17.3529, 2, 10.9997 )
+
+[node name="Ball" parent="Balls/ball_holder2" instance=ExtResource( 8 )]
+script = ExtResource( 12 )
+
+[node name="ball_holder3" type="Spatial" parent="Balls"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -24.3081, 2, 15.7814 )
+
+[node name="Ball" parent="Balls/ball_holder3" instance=ExtResource( 8 )]
+script = ExtResource( 12 )
+
+[node name="ball_holder4" type="Spatial" parent="Balls"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -17.4398, 2, 21.259 )
+
+[node name="Ball" parent="Balls/ball_holder4" instance=ExtResource( 8 )]
+script = ExtResource( 12 )
+
+[node name="ball_holder6" type="Spatial" parent="Balls"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8.91969, 2, 24.3019 )
+
+[node name="Ball" parent="Balls/ball_holder6" instance=ExtResource( 8 )]
+script = ExtResource( 12 )
+
+[node name="ball_holder7" type="Spatial" parent="Balls"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 18.8141, 2, 24.3019 )
+
+[node name="Ball" parent="Balls/ball_holder7" instance=ExtResource( 8 )]
+script = ExtResource( 12 )
+
+[node name="ball_holder8" type="Spatial" parent="Balls"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 24.4652, 2, 24.3019 )
+
+[node name="Ball" parent="Balls/ball_holder8" instance=ExtResource( 8 )]
+script = ExtResource( 12 )
+
+[node name="ball_holder9" type="Spatial" parent="Balls"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 24.4652, 2, 18.7377 )
+
+[node name="Ball" parent="Balls/ball_holder9" instance=ExtResource( 8 )]
+script = ExtResource( 12 )
+
+[node name="Spikes" type="Spatial" parent="."]
+
+[node name="SpikeBall1" parent="Spikes" instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -22.515, 3.24608, 23.8654 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Spikes/SpikeBall1"]
+autoplay = "Spike1Animation"
+anims/Spike1Animation = SubResource( 4 )
+
+[node name="SpikeBall2" parent="Spikes" instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -19.1397, 3.24608, -22.8025 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Spikes/SpikeBall2"]
+autoplay = "Spike2Animation"
+anims/Spike1Animation = SubResource( 5 )
+anims/Spike2Animation = SubResource( 6 )
+
+[node name="SpikeBall3" parent="Spikes" instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 17.2328, 3.24608, -8.40227 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Spikes/SpikeBall3"]
+autoplay = "Spike3Animation"
+anims/Spike1Animation = SubResource( 7 )
+anims/Spike2Animation = SubResource( 8 )
+anims/Spike3Animation = SubResource( 9 )
+
+[node name="SpikeBall4" parent="Spikes" instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.42674, 3.24608, -11.2527 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Spikes/SpikeBall4"]
+autoplay = "Spike4Animation"
+anims/Spike1Animation = SubResource( 10 )
+anims/Spike4Animation = SubResource( 11 )
+
+[node name="Control" type="Control" parent="."]
+margin_right = 1280.0
+margin_bottom = 720.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="Control"]
+position = Vector2( 1042.68, 58.0207 )
+scale = Vector2( 0.239911, 0.234021 )
+texture = ExtResource( 14 )
+
+[node name="X" type="Label" parent="Control"]
+margin_left = 1103.15
+margin_top = 29.2791
+margin_right = 1139.15
+margin_bottom = 90.2791
+custom_fonts/font = SubResource( 12 )
+custom_colors/font_color = Color( 0.792157, 0.184314, 0.105882, 1 )
+text = "X"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Counter" type="Label" parent="Control"]
+margin_left = 1144.75
+margin_top = 7.22742
+margin_right = 1263.75
+margin_bottom = 104.227
+custom_fonts/font = SubResource( 13 )
+custom_colors/font_color = Color( 0.792157, 0.184314, 0.105882, 1 )
+text = "Q"
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Timer" type="Timer" parent="Control/Counter"]
+
+[node name="Camera" type="InterpolatedCamera" parent="."]
+transform = Transform( 0.999995, -0.00169236, 0.00263899, 7.4665e-05, 0.854396, 0.519623, -0.00313413, -0.519621, 0.854391, -0.0631485, 14.0553, 25.2867 )
+environment = ExtResource( 7 )
+target = NodePath("../ZebraCaracter/Spatial")
+speed = 3.0
+enabled = true
+[connection signal="ballCollected" from="Balls/ball_holder/Ball" to="Control/Counter" method="_on_Ball_ballCollected"]
+[connection signal="body_entered" from="Balls/ball_holder/Ball" to="Balls/ball_holder/Ball" method="_on_Ball_body_entered"]
+[connection signal="ballCollected" from="Balls/ball_holder5/Ball" to="Control/Counter" method="_on_Ball_ballCollected"]
+[connection signal="body_entered" from="Balls/ball_holder5/Ball" to="Balls/ball_holder5/Ball" method="_on_Ball_body_entered"]
+[connection signal="ballCollected" from="Balls/ball_holder10/Ball" to="Control/Counter" method="_on_Ball_ballCollected"]
+[connection signal="body_entered" from="Balls/ball_holder10/Ball" to="Balls/ball_holder10/Ball" method="_on_Ball_body_entered"]
+[connection signal="ballCollected" from="Balls/ball_holder11/Ball" to="Control/Counter" method="_on_Ball_ballCollected"]
+[connection signal="body_entered" from="Balls/ball_holder11/Ball" to="Balls/ball_holder11/Ball" method="_on_Ball_body_entered"]
+[connection signal="ballCollected" from="Balls/ball_holder12/Ball" to="Control/Counter" method="_on_Ball_ballCollected"]
+[connection signal="body_entered" from="Balls/ball_holder12/Ball" to="Balls/ball_holder12/Ball" method="_on_Ball_body_entered"]
+[connection signal="ballCollected" from="Balls/ball_holder13/Ball" to="Control/Counter" method="_on_Ball_ballCollected"]
+[connection signal="body_entered" from="Balls/ball_holder13/Ball" to="Balls/ball_holder13/Ball" method="_on_Ball_body_entered"]
+[connection signal="ballCollected" from="Balls/ball_holder14/Ball" to="Control/Counter" method="_on_Ball_ballCollected"]
+[connection signal="body_entered" from="Balls/ball_holder14/Ball" to="Balls/ball_holder14/Ball" method="_on_Ball_body_entered"]
+[connection signal="ballCollected" from="Balls/ball_holder16/Ball" to="Control/Counter" method="_on_Ball_ballCollected"]
+[connection signal="body_entered" from="Balls/ball_holder16/Ball" to="Balls/ball_holder16/Ball" method="_on_Ball_body_entered"]
+[connection signal="ballCollected" from="Balls/ball_holder17/Ball" to="Control/Counter" method="_on_Ball_ballCollected"]
+[connection signal="body_entered" from="Balls/ball_holder17/Ball" to="Balls/ball_holder17/Ball" method="_on_Ball_body_entered"]
+[connection signal="ballCollected" from="Balls/ball_holder18/Ball" to="Control/Counter" method="_on_Ball_ballCollected"]
+[connection signal="body_entered" from="Balls/ball_holder18/Ball" to="Balls/ball_holder18/Ball" method="_on_Ball_body_entered"]
+[connection signal="ballCollected" from="Balls/ball_holder19/Ball" to="Control/Counter" method="_on_Ball_ballCollected"]
+[connection signal="body_entered" from="Balls/ball_holder19/Ball" to="Balls/ball_holder19/Ball" method="_on_Ball_body_entered"]
+[connection signal="ballCollected" from="Balls/ball_holder20/Ball" to="Control/Counter" method="_on_Ball_ballCollected"]
+[connection signal="body_entered" from="Balls/ball_holder20/Ball" to="Balls/ball_holder20/Ball" method="_on_Ball_body_entered"]
+[connection signal="ballCollected" from="Balls/ball_holder21/Ball" to="Control/Counter" method="_on_Ball_ballCollected"]
+[connection signal="body_entered" from="Balls/ball_holder21/Ball" to="Balls/ball_holder21/Ball" method="_on_Ball_body_entered"]
+[connection signal="ballCollected" from="Balls/ball_holder22/Ball" to="Control/Counter" method="_on_Ball_ballCollected"]
+[connection signal="body_entered" from="Balls/ball_holder22/Ball" to="Balls/ball_holder22/Ball" method="_on_Ball_body_entered"]
+[connection signal="ballCollected" from="Balls/ball_holder15/Ball" to="Control/Counter" method="_on_Ball_ballCollected"]
+[connection signal="body_entered" from="Balls/ball_holder15/Ball" to="Balls/ball_holder15/Ball" method="_on_Ball_body_entered"]
+[connection signal="ballCollected" from="Balls/ball_holder2/Ball" to="Control/Counter" method="_on_Ball_ballCollected"]
+[connection signal="body_entered" from="Balls/ball_holder2/Ball" to="Balls/ball_holder2/Ball" method="_on_Ball_body_entered"]
+[connection signal="ballCollected" from="Balls/ball_holder3/Ball" to="Control/Counter" method="_on_Ball_ballCollected"]
+[connection signal="body_entered" from="Balls/ball_holder3/Ball" to="Balls/ball_holder3/Ball" method="_on_Ball_body_entered"]
+[connection signal="ballCollected" from="Balls/ball_holder4/Ball" to="Control/Counter" method="_on_Ball_ballCollected"]
+[connection signal="body_entered" from="Balls/ball_holder4/Ball" to="Balls/ball_holder4/Ball" method="_on_Ball_body_entered"]
+[connection signal="body_entered" from="Balls/ball_holder6/Ball" to="Balls/ball_holder6/Ball" method="_on_Ball_body_entered"]
+[connection signal="ballCollected" from="Balls/ball_holder7/Ball" to="Control/Counter" method="_on_Ball_ballCollected"]
+[connection signal="body_entered" from="Balls/ball_holder7/Ball" to="Balls/ball_holder7/Ball" method="_on_Ball_body_entered"]
+[connection signal="ballCollected" from="Balls/ball_holder8/Ball" to="Control/Counter" method="_on_Ball_ballCollected"]
+[connection signal="body_entered" from="Balls/ball_holder8/Ball" to="Balls/ball_holder8/Ball" method="_on_Ball_body_entered"]
+[connection signal="ballCollected" from="Balls/ball_holder9/Ball" to="Control/Counter" method="_on_Ball_ballCollected"]
+[connection signal="body_entered" from="Balls/ball_holder9/Ball" to="Balls/ball_holder9/Ball" method="_on_Ball_body_entered"]
+[connection signal="body_entered" from="Spikes/SpikeBall1" to="ZebraCaracter" method="_on_SpikeBall1_body_entered"]
+[connection signal="body_entered" from="Spikes/SpikeBall2" to="ZebraCaracter" method="_on_SpikeBall2_body_entered"]
+[connection signal="body_entered" from="Spikes/SpikeBall3" to="ZebraCaracter" method="_on_SpikeBall3_body_entered"]
+[connection signal="body_entered" from="Spikes/SpikeBall4" to="ZebraCaracter" method="_on_SpikeBall4_body_entered"]
+[connection signal="timeout" from="Control/Counter/Timer" to="Control/Counter" method="_on_Timer_timeout"]
